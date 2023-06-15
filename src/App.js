@@ -1,23 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import './styles/app.css'
+
+import React, { useState } from 'react';
+import  { BrowserRouter as Router, Switch, Route, Link, Routes } from "react-router-dom"
+import Header from './components/header/Header'
+import SideMenu from './components/sidemenu/SideMenu'
+import Login from './components/login-register/Login'
+import Register from './components/login-register/Register'
+import AppointmentsList from './components/appointments/AppointmentsList';
+
+
 
 function App() {
+
+  const [loggedIn, setLoggedIn] = useState(false);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+
+      <div className="container">
+        <SideMenu loggedIn={loggedIn}/>
+
+        <main>
+          {loggedIn ? (
+            <>
+              <Routes>
+                <Route path="/apointments" element={<AppointmentsList />} />
+              </Routes>
+            </>
+          ) : (
+            <>
+              <Routes>
+                <Route path="/" element={<Login />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+              </Routes>
+            </>
+          )}
+        </main>
+
+      </div>
+      
+      
     </div>
   );
 }

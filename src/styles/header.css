@@ -1,0 +1,7 @@
+.header {
+    border-bottom: solid black 1px ;
+}
+
+.header > h1 {
+    margin-left: 20px;
+}
