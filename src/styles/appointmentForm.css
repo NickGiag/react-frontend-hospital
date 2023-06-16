@@ -1,0 +1,18 @@
+.appointment-form {
+    width: 60%;
+}
+
+.appointment-form label {
+    margin-bottom: 2rem;
+}
+
+.appointment-form input,
+.appointment-form select {
+margin-bottom: 2rem;
+}
+
+.doctor-drop-down {
+    width: 300px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}

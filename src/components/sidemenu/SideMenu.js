@@ -10,7 +10,7 @@ function SideMenu({loggedIn}) {
                     <Link to="/appointments">Your Appointments</Link>
                     </li>
                     <li>
-                    <Link to="/appointments">Make a new Appointment</Link>
+                    <Link to="/appointments/create">Make a new Appointment</Link>
                     </li>
                 </ul>
             ) : (

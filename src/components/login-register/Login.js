@@ -11,7 +11,7 @@ function Login() {
         // Perform login logic here, e.g., send login request to server
         console.log('Username:', username);
         console.log('Password:', password);
-        // Reset form fields
+
         setUsername('');
         setPassword('');
     };

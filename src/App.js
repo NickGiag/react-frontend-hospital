@@ -7,12 +7,13 @@ import SideMenu from './components/sidemenu/SideMenu'
 import Login from './components/login-register/Login'
 import Register from './components/login-register/Register'
 import AppointmentsList from './components/appointments/AppointmentsList';
+import AppointmentForm from './components/appointments/AppointmentForm';
 
 
 
 function App() {
 
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
 
   return (
     <div className="App">
@@ -25,13 +26,13 @@ function App() {
           {loggedIn ? (
             <>
               <Routes>
-                <Route path="/apointments" element={<AppointmentsList />} />
+                <Route path="/appointments" element={<AppointmentsList />} />
+                <Route path="/appointments/create" element={<AppointmentForm />} />
               </Routes>
             </>
           ) : (
             <>
               <Routes>
-                <Route path="/" element={<Login />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
               </Routes>
