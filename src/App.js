@@ -8,6 +8,7 @@ import Login from './components/login-register/Login'
 import Register from './components/login-register/Register'
 import AppointmentsList from './components/appointments/AppointmentsList';
 import AppointmentForm from './components/appointments/AppointmentForm';
+import AppointmentUpdate from './components/appointments/AppointmentUpdate';
 
 
 
@@ -28,6 +29,7 @@ function App() {
               <Routes>
                 <Route path="/appointments" element={<AppointmentsList />} />
                 <Route path="/appointments/create" element={<AppointmentForm />} />
+                <Route path="/appointments/update" element={<AppointmentUpdate />} />
               </Routes>
             </>
           ) : (

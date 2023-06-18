@@ -6,3 +6,4 @@ to be its frontend using ReactJS.
 - Login Register components
 - Appointments list and appointment creation form components
 
+- Update appointment component

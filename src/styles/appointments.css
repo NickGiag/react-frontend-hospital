@@ -7,3 +7,17 @@ th, td {
     padding: 20px;
 }
 
+.delete-button {
+    background-color: red;
+    color: white;
+    border-color: red;
+    border-radius: 5px;
+    padding:5px;
+}
+
+.update-button {
+    color: white;
+    border-radius: 5px;
+    padding:5px;
+    background-color: rgb(78, 78, 255);
+}
