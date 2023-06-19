@@ -61,7 +61,7 @@ function AppointmentsList() {
                 {appointments.map((appointment) => (
                 <tr key={appointment.id}>
                     <td>{appointment.appointmentDateTime}</td>
-                    <td>{appointment.doctor.name}</td>
+                    <td>{appointment.doctor.fullName}</td>
                     <td>{appointment.doctor.speciality}</td>
                     <td><button className='update-button' onClick={() => handleUpdate(appointment.id)}>Update</button></td>
                     <td><button className='delete-button' onClick={() => handleDelete(appointment.id)}>Delete</button></td>

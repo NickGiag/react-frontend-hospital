@@ -8,9 +8,9 @@ import axios from 'axios';
 
 function AppointmentUpdate() {
   const [doctors, setDoctors] = useState([]);
-  const [selectedDoctor, setSelectedDoctor] = useState(null);
-  const [selectedDate, setSelectedDate] = useState(null);
-  const [selectedTime, setSelectedTime] = useState(null);
+  const [selectedDoctor, setSelectedDoctor] = useState('');
+  const [selectedDate, setSelectedDate] = useState('');
+  const [selectedTime, setSelectedTime] = useState('');
 
   const navigate = useNavigate();
   const location = useLocation();

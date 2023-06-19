@@ -14,19 +14,24 @@ import AppointmentUpdate from './components/appointments/AppointmentUpdate';
 
 function App() {
 
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  const handleLogout = () => {
+    setLoggedIn(false);
+  }
 
   return (
     <div className="App">
       <Header />
 
       <div className="container">
-        <SideMenu loggedIn={loggedIn}/>
+        <SideMenu loggedIn={loggedIn} handleLogout={handleLogout}/>
 
         <main>
           {loggedIn ? (
             <>
               <Routes>
+              <Route path="/" element={<AppointmentsList />} />
                 <Route path="/appointments" element={<AppointmentsList />} />
                 <Route path="/appointments/create" element={<AppointmentForm />} />
                 <Route path="/appointments/update" element={<AppointmentUpdate />} />
@@ -35,7 +40,8 @@ function App() {
           ) : (
             <>
               <Routes>
-                <Route path="/login" element={<Login />} />
+                <Route path="/" element={<Login setLoggedIn={setLoggedIn}/> } />
+                <Route path="/login" element={<Login setLoggedIn={setLoggedIn}/> } />
                 <Route path="/register" element={<Register />} />
               </Routes>
             </>

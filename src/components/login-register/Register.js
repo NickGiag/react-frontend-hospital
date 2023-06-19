@@ -1,5 +1,6 @@
 // import '../../styles/sideMenu.css'
 import React, { useState } from 'react';
+import axios from 'axios';
 
 function Register() {
     const [userType, setUserType] = useState('customer');
@@ -17,6 +18,54 @@ function Register() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Perform registration logic here, e.g., send registration request to server
+
+    const userData = {
+        username,
+        password
+    }
+
+    axios.post('http://localhost:4000/users',userData)
+    .then((response) => {
+        const user = response.data
+        console.log('User created', response.data);
+        
+        if (userType === "customer") {
+            const customerData = {
+                fullName,
+                phone,
+                email,
+                user
+            }
+            
+            axios.post('http://localhost:4000/customers',customerData)
+            .then((response) => {
+                console.log('Customer created', response.data);   
+            })
+            .catch((error) => {
+                console.log('Customer creation error:', error);
+            })
+
+        } else if (userType === "doctor") {
+            const doctorData = {
+                fullName,
+                speciality,
+                user
+            }
+            
+            axios.post('http://localhost:4000/doctors',doctorData)
+            .then((response) => {
+                console.log('Doctor created', response.data);   
+            })
+            .catch((error) => {
+                console.log('Doctor creation error:', error);
+            })
+        }
+        alert('User created successfully!')
+    })
+    .catch((error) => {
+        console.log('User creation error:', error);
+    })
+
     console.log('User Type:', userType);
     console.log('Full Name:', fullName);
     console.log('Username:', username);

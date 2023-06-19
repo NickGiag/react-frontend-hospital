@@ -8,9 +8,9 @@ import axios from 'axios';
 
 function AppointmentForm() {
   const [doctors, setDoctors] = useState([])
-  const [selectedDoctor, setSelectedDoctor] = useState(null);
-  const [selectedDate, setSelectedDate] = useState(null);
-  const [selectedTime, setSelectedTime] = useState(null);
+  const [selectedDoctor, setSelectedDoctor] = useState('');
+  const [selectedDate, setSelectedDate] = useState('');
+  const [selectedTime, setSelectedTime] = useState('');
 
   useEffect(() => {
     // Fetch doctors from the backend
@@ -26,7 +26,7 @@ function AppointmentForm() {
 
   const doctorOptions = doctors.map((doctor) => ({
     value: doctor.id,
-    label: doctor.name + "  /  " + doctor.speciality,
+    label: doctor.fullName + "  /  " + doctor.speciality,
   }));
   
   const handleDoctorChange = (selectedOption) => {
@@ -43,24 +43,24 @@ function AppointmentForm() {
     const requestData = {
       doctor: {
         id: selectedDoctor.value,
-        name: selectedDoctor.name,
+        fullName: selectedDoctor.fullName,
         speciality: selectedDoctor.speciality
       },
       appointmentDateTime: format(selectedDate, 'yyyy-MM-dd') + ' ' + selectedTime
     }
 
     axios.post('http://localhost:4000/customers/1/appointments',requestData)
-      .then((response) => {
-        console.log('Appointment created:', response.data);
-        alert('Appointment created successfully');
+    .then((response) => {
+      console.log('Appointment created:', response.data);
+      alert('Appointment created successfully');
 
-        setSelectedDoctor(null);
-        setSelectedDate(null);
-        setSelectedTime(null);
-      })
-      .catch((error) => {
-      console.log('Appointment created:', error);
-      })
+      setSelectedDoctor('');
+      setSelectedDate('');
+      setSelectedTime('');
+    })
+    .catch((error) => {
+    console.log('Appointment created:', error);
+    })
 
     // Include selectedDoctor.value, selectedDate, and selectedTime in the request payload
     console.log('Selected Doctor:', selectedDoctor);
@@ -82,7 +82,7 @@ function AppointmentForm() {
             value={selectedDoctor}
             onChange={handleDoctorChange}
             placeholder="Select a doctor"
-            READONLY
+            readOnly
             />
         </div>
         <div className='date'>
