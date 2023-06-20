@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-function Login({setLoggedIn}) {
+function Login({setLoggedIn, setUserId, setUserType}) {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -20,7 +20,11 @@ function Login({setLoggedIn}) {
 
         axios.post('http://localhost:4000/login',user)
         .then((response) => {
-            setLoggedIn(response.data)
+            if (response.data !== null) {
+                setUserId(response.data.id)
+                setUserType(response.data.userType)
+                setLoggedIn(true)
+            }
             console.log('Logged in:', response.data);
             navigate('/');
         })

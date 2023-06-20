@@ -1,10 +1,20 @@
 import '../../styles/sideMenu.css'
 import { Link } from 'react-router-dom';
 
-function SideMenu({loggedIn, handleLogout}) {
+function SideMenu({loggedIn, handleLogout, userType}) {
     return (
         <div className="side-menu">
-            {loggedIn ? (
+            {loggedIn ? ( 
+                userType === "doctor" ?  ( 
+                    <ul>
+                        <li>
+                            <Link to="/appointments">Your Appointments</Link>
+                        </li>
+                        <li className='logout'>
+                            <Link to="/" onClick={handleLogout}>Log out</Link>
+                        </li>
+                    </ul>
+                ) : (
                 <ul>
                     <li>
                         <Link to="/appointments">Your Appointments</Link>
@@ -15,7 +25,7 @@ function SideMenu({loggedIn, handleLogout}) {
                     <li className='logout'>
                         <Link to="/" onClick={handleLogout}>Log out</Link>
                     </li>
-                </ul>
+                </ul> )
             ) : (
                 <ul>
                     <li>

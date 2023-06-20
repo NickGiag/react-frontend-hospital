@@ -6,7 +6,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { format } from 'date-fns';
 import axios from 'axios';
 
-function AppointmentForm() {
+function AppointmentForm({userId, userType}) {
   const [doctors, setDoctors] = useState([])
   const [selectedDoctor, setSelectedDoctor] = useState('');
   const [selectedDate, setSelectedDate] = useState('');
@@ -49,7 +49,7 @@ function AppointmentForm() {
       appointmentDateTime: format(selectedDate, 'yyyy-MM-dd') + ' ' + selectedTime
     }
 
-    axios.post('http://localhost:4000/customers/1/appointments',requestData)
+    axios.post(`http://localhost:4000/customers/${userId}/appointments`,requestData)
     .then((response) => {
       console.log('Appointment created:', response.data);
       alert('Appointment created successfully');
@@ -59,7 +59,7 @@ function AppointmentForm() {
       setSelectedTime('');
     })
     .catch((error) => {
-    console.log('Appointment created:', error);
+      console.log('Appointment error:', error);
     })
 
     // Include selectedDoctor.value, selectedDate, and selectedTime in the request payload

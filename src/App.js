@@ -15,6 +15,8 @@ import AppointmentUpdate from './components/appointments/AppointmentUpdate';
 function App() {
 
   const [loggedIn, setLoggedIn] = useState(false);
+  const [userId, setUserId] = useState('')
+  const [userType, setUserType] = useState(null)
 
   const handleLogout = () => {
     setLoggedIn(false);
@@ -25,23 +27,23 @@ function App() {
       <Header />
 
       <div className="container">
-        <SideMenu loggedIn={loggedIn} handleLogout={handleLogout}/>
+        <SideMenu loggedIn={loggedIn} handleLogout={handleLogout} userType={userType}/>
 
         <main>
           {loggedIn ? (
             <>
               <Routes>
-              <Route path="/" element={<AppointmentsList />} />
-                <Route path="/appointments" element={<AppointmentsList />} />
-                <Route path="/appointments/create" element={<AppointmentForm />} />
-                <Route path="/appointments/update" element={<AppointmentUpdate />} />
+                <Route path="/" element={<AppointmentsList userId={userId} userType={userType}/>} />
+                <Route path="/appointments" element={<AppointmentsList userId={userId} userType={userType}/>} />
+                <Route path="/appointments/create" element={<AppointmentForm userId={userId} userType={userType}/>} />
+                <Route path="/appointments/update" element={<AppointmentUpdate userId={userId}/>} />
               </Routes>
             </>
           ) : (
             <>
               <Routes>
-                <Route path="/" element={<Login setLoggedIn={setLoggedIn}/> } />
-                <Route path="/login" element={<Login setLoggedIn={setLoggedIn}/> } />
+                <Route path="/" element={<Login setLoggedIn={setLoggedIn} setUserId={setUserId} setUserType={setUserType}/> } />
+                <Route path="/login" element={<Login setLoggedIn={setLoggedIn} setUserId={setUserId} setUserType={setUserType}/> } />
                 <Route path="/register" element={<Register />} />
               </Routes>
             </>

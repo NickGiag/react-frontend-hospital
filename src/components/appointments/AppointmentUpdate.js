@@ -6,7 +6,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { format } from 'date-fns';
 import axios from 'axios';
 
-function AppointmentUpdate() {
+function AppointmentUpdate({userId}) {
   const [doctors, setDoctors] = useState([]);
   const [selectedDoctor, setSelectedDoctor] = useState('');
   const [selectedDate, setSelectedDate] = useState('');
@@ -30,7 +30,7 @@ function AppointmentUpdate() {
     if (appointmentData) {
       setSelectedDoctor({
         value: appointmentData.doctor.id,
-        label: appointmentData.doctor.name + '  /  ' + appointmentData.doctor.speciality
+        label: appointmentData.doctor.fullName + '  /  ' + appointmentData.doctor.speciality
       });
       
       const [date, time] = appointmentData.appointmentDateTime.split(' ');
@@ -43,7 +43,7 @@ function AppointmentUpdate() {
 
   const doctorOptions = doctors.map((doctor) => ({
     value: doctor.id,
-    label: doctor.name + '  /  ' + doctor.speciality,
+    label: doctor.fullName + '  /  ' + doctor.speciality,
   }));
 
   const handleDoctorChange = (selectedOption) => {
@@ -60,7 +60,7 @@ function AppointmentUpdate() {
     const requestData = {
       doctor: {
         id: selectedDoctor.value,
-        name: selectedDoctor.name,
+        name: selectedDoctor.fullName,
         speciality: selectedDoctor.speciality,
       },
       appointmentDateTime: format(selectedDate, 'yyyy-MM-dd') + ' ' + selectedTime,
@@ -68,7 +68,7 @@ function AppointmentUpdate() {
 
     const appointmentId = appointmentData.id;
 
-    axios.put(`http://localhost:4000/customers/1/appointments/${appointmentId}`, requestData)
+    axios.put(`http://localhost:4000/customers/${userId}/appointments/${appointmentId}`, requestData)
     .then((response) => {
         console.log('Appointment updated:', response.data);
         alert('Appointment updated successfully');

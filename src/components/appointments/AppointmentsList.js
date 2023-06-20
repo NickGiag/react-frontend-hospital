@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-function AppointmentsList() {
+function AppointmentsList({userId, userType}) {
 
     const [appointments, setAppointments] = useState([]);
     const navigate = useNavigate();
@@ -13,18 +13,31 @@ function AppointmentsList() {
     }, []);
 
     const fetchAppointments = () => {
-        axios.get('http://localhost:4000/customers/1/appointments')
-        .then((response) => {
-            setAppointments(response.data);
-            console.log(response.data);
-        })
-        .catch((error) => {
-            console.log('Error fetching appointments:', error);
-        });
+        if (userType === "customer") {
+            axios.get(`http://localhost:4000/customers/${userId}/appointments`)
+            .then((response) => {
+                setAppointments(response.data);
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.log('Error fetching appointments:', error);
+            });
+
+        } else if (userType === "doctor") {
+            axios.get(`http://localhost:4000/doctors/${userId}/appointments`)
+            .then((response) => {
+                setAppointments(response.data);
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.log('Error fetching appointments:', error);
+            });
+        }
+        
     }
 
     const handleDelete = (id) => {
-        axios.delete(`http://localhost:4000/customers/1/appointments/${id}`)
+        axios.delete(`http://localhost:4000/customers/${userId}/appointments/${id}`)
         .then((response) => {
             console.log('Appointment deleted:', response.data);
             fetchAppointments();
@@ -36,7 +49,7 @@ function AppointmentsList() {
     }
 
     const handleUpdate = (id) => {
-        axios.get(`http://localhost:4000/customers/1/appointments/${id}`)
+        axios.get(`http://localhost:4000/customers/${userId}/appointments/${id}`)
         .then((response) => {
             const appointmentData = response.data;
             console.log('Appointment to be updated:', appointmentData);
@@ -49,6 +62,30 @@ function AppointmentsList() {
 
     return (
         <div className="appointment-list">
+            {userType === "doctor" ? (
+            <table className="center">
+            <thead>
+                <tr>
+                <th>Date & Time</th>
+                <th>Customer</th>
+                <th>Email</th>
+                <th>Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+                {appointments.map((appointment) => (
+                <tr key={appointment.id}>
+                    <td>{appointment.appointmentDateTime}</td>
+                    <td>{appointment.customer.fullName}</td>
+                    <td>{appointment.customer.email}</td>
+                    <td>{appointment.customer.phone}</td>
+                    {/*<td><button className='update-button' onClick={() => handleUpdate(appointment.id)}>Update</button></td>
+                    <td><button className='delete-button' onClick={() => handleDelete(appointment.id)}>Delete</button></td>*/}
+                </tr>
+                ))}
+            </tbody>
+            </table> 
+            ) : (
             <table className="center">
             <thead>
                 <tr>
@@ -68,7 +105,8 @@ function AppointmentsList() {
                 </tr>
                 ))}
             </tbody>
-            </table>
+            </table> 
+            )}
         </div>
     )
 }

@@ -21,7 +21,8 @@ function Register() {
 
     const userData = {
         username,
-        password
+        password,
+        userType
     }
 
     axios.post('http://localhost:4000/users',userData)
