@@ -76,14 +76,7 @@ function AppointmentUpdate({userId}) {
     })
     .catch((error) => {
         console.log('Error updating appointment:', error);
-    });
-
-
-    console.log('Selected Doctor:', selectedDoctor);
-    console.log('Selected Date:', format(selectedDate, 'yyyy-MM-dd'));
-    console.log('Selected Time:', selectedTime);
-
-    
+    });    
   };
 
   return (

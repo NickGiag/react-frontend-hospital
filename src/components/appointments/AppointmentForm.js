@@ -13,7 +13,6 @@ function AppointmentForm({userId, userType}) {
   const [selectedTime, setSelectedTime] = useState('');
 
   useEffect(() => {
-    // Fetch doctors from the backend
     axios.get('http://localhost:4000/doctors')
     .then((response) => {
         setDoctors(response.data);
@@ -39,7 +38,7 @@ function AppointmentForm({userId, userType}) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Submit the form data to the backend
+
     const requestData = {
       doctor: {
         id: selectedDoctor.value,
@@ -61,11 +60,6 @@ function AppointmentForm({userId, userType}) {
     .catch((error) => {
       console.log('Appointment error:', error);
     })
-
-    // Include selectedDoctor.value, selectedDate, and selectedTime in the request payload
-    console.log('Selected Doctor:', selectedDoctor);
-    console.log('Selected Date:', format(selectedDate, 'yyyy-MM-dd'));
-    console.log('Selected Time:', selectedTime);
   };
 
 

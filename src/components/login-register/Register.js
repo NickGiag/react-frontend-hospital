@@ -67,14 +67,6 @@ function Register() {
         console.log('User creation error:', error);
     })
 
-    console.log('User Type:', userType);
-    console.log('Full Name:', fullName);
-    console.log('Username:', username);
-    console.log('Password:', password);
-    console.log('Email:', email);
-    console.log('Phone:', phone);
-    console.log('Speciality:', speciality);
-    // Reset form fields
     setUserType('customer');
     setFullName('');
     setUsername('');

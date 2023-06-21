@@ -33,9 +33,6 @@ function Login({setLoggedIn, setUserId, setUserType}) {
             alert('Wrong username or password');
         })
 
-        console.log('Username:', username);
-        console.log('Password:', password);
-
         setUsername('');
         setPassword('');
     };
