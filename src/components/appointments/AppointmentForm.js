@@ -62,10 +62,6 @@ function AppointmentForm({userId, userType}) {
     })
   };
 
-
-
-
-
   return (
     <div className='appointment-form center'>
         <form onSubmit={handleSubmit}>

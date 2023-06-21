@@ -40,7 +40,8 @@ function Register() {
             
             axios.post('http://localhost:4000/customers',customerData)
             .then((response) => {
-                console.log('Customer created', response.data);   
+                console.log('Customer created', response.data); 
+                alert('User created successfully!')     
             })
             .catch((error) => {
                 console.log('Customer creation error:', error);
@@ -55,13 +56,13 @@ function Register() {
             
             axios.post('http://localhost:4000/doctors',doctorData)
             .then((response) => {
-                console.log('Doctor created', response.data);   
+                console.log('Doctor created', response.data);
+                alert('User created successfully!')   
             })
             .catch((error) => {
                 console.log('Doctor creation error:', error);
             })
         }
-        alert('User created successfully!')
     })
     .catch((error) => {
         console.log('User creation error:', error);
