@@ -82,7 +82,7 @@ function AppointmentForm({userId, userType}) {
             value={selectedDoctor}
             onChange={handleDoctorChange}
             placeholder="Select a doctor"
-            readOnly
+            required
             />
         </div>
         <div className='date'>
@@ -92,6 +92,7 @@ function AppointmentForm({userId, userType}) {
               selected={selectedDate}
               onChange={handleDateChange}
               dateFormat="yyyy-MM-dd"
+              required
             />
         </div>
         <div>
@@ -100,6 +101,7 @@ function AppointmentForm({userId, userType}) {
             type="time"
             value={selectedTime}
             onChange={(e) => setSelectedTime(formatTimeTo24Hour(e.target.value))}
+            required
             />
         </div>
         <button type="submit">Create Appointment</button>

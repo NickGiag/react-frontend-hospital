@@ -115,6 +115,7 @@ function Register() {
                 id="fullName"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
+                required
                 />
             </div>
             <div>
@@ -124,6 +125,7 @@ function Register() {
                 id="username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
+                required
                 />
             </div>
             <div>
@@ -133,6 +135,7 @@ function Register() {
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                required
                 />
             </div>
             {userType === 'customer' && (
@@ -153,6 +156,7 @@ function Register() {
                     id="phone"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
+                    required
                     />
                 </div>
                 </>
@@ -165,6 +169,7 @@ function Register() {
                     id="speciality"
                     value={speciality}
                     onChange={(e) => setSpeciality(e.target.value)}
+                    required
                 />
                 </div>
             )}
