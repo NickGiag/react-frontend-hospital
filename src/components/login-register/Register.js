@@ -1,4 +1,4 @@
-// import '../../styles/sideMenu.css'
+import '../../styles/register.css'
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -87,8 +87,8 @@ function Register() {
     return (
         <div className="register">
             <form onSubmit={handleSubmit}>
-            <h2>Registration</h2>
-            <div>
+            <h1>Registration</h1>
+            <div className="radio-container center">
                 <label>
                 <input
                     type="radio"

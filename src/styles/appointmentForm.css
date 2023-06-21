@@ -1,18 +1,53 @@
 .appointment-form {
     width: 60%;
-}
-
-.appointment-form label {
-    margin-bottom: 2rem;
-}
-
-.appointment-form input,
-.appointment-form select {
-margin-bottom: 2rem;
-}
-
-.doctor-drop-down {
-    width: 300px;
-    margin-top: 1rem;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+  }
+  
+  .appointment-form label {
+    display: block;
+    margin-bottom: 10px;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .appointment-form input[type="time"] {
+    width: 100px;
+    padding: 10px;
     margin-bottom: 1rem;
-}
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+  }
+
+  .appointment-form .react-datepicker__input-container input {
+    width: 80px;
+    padding: 10px;
+    margin-bottom: 1rem;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+  }
+  
+  
+  .appointment-form button[type="submit"] {
+    background-color: #2196f3;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 2rem;
+  }
+  
+  .appointment-form button[type="submit"]:hover {
+    background-color: #0c7cd5;
+  }
+  
+  .appointment-form .doctor-drop-down {
+    width: 50%;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+  }
+  

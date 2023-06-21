@@ -1,4 +1,4 @@
-// import '../../styles/sideMenu.css'
+import '../../styles/login.css'
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -43,7 +43,7 @@ function Login({setLoggedIn, setUserId, setUserType}) {
     return (
         <div className="login">
             <form onSubmit={handleSubmit}>
-                <h2>Login</h2>
+                <h1>Login</h1>
                 <div>
                     <label htmlFor="username">Username</label>
                     <input

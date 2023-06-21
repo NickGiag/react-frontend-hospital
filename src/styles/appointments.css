@@ -1,23 +1,53 @@
-table, th , td {
-    border: 1px solid black;
+.appointment-list {
+    margin-top: 20px;
+  }
+  
+  .appointment-list table {
+    width: 90%;
     border-collapse: collapse;
-}
-
-th, td {
-    padding: 20px;
-}
-
-.delete-button {
-    background-color: red;
-    color: white;
-    border-color: red;
+    background-color: #f8f8f8;
+  }
+  
+  .appointment-list th,
+  .appointment-list td {
+    padding: 12px;
+    text-align: left;
+  }
+  
+  .appointment-list th {
+    background-color: #0c7cd5;
+    color: #ffffff;
+  }
+  
+  .appointment-list tr:nth-child(even) {
+    background-color: #e8e8e8;
+  }
+  
+  .appointment-list .delete-button {
+    background-color: #ff5252;
+    color: #ffffff;
+    border: none;
     border-radius: 5px;
-    padding:5px;
-}
-
-.update-button {
-    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+  .appointment-list .update-button {
+    background-color: #4e4eff;
+    color: #ffffff;
+    border: none;
     border-radius: 5px;
-    padding:5px;
-    background-color: rgb(78, 78, 255);
-}
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+  .appointment-list .center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .appointment-list tr h3 {
+    text-align: center;
+  }

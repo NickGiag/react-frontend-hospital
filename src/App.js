@@ -26,10 +26,11 @@ function App() {
     <div className="App">
       <Header />
 
-      <div className="container">
+      <div className='container'>
         <SideMenu loggedIn={loggedIn} handleLogout={handleLogout} userType={userType}/>
 
-        <main>
+        
+        <main className='center'>
           {loggedIn ? (
             <>
               <Routes>
