@@ -17,7 +17,6 @@ function Register() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Perform registration logic here, e.g., send registration request to server
 
     const userData = {
         username,
@@ -65,7 +64,14 @@ function Register() {
         }
     })
     .catch((error) => {
-        console.log('User creation error:', error);
+        if (error.response && error.response.status === 409) {
+            const errorMessage = error.response.data;
+            console.log('User creation error:', errorMessage.message);
+            alert(errorMessage.message);
+        } else {
+            console.log('User creation error:', error);
+            alert('Error, User was not created.');
+        }
     })
 
     setUserType('customer');

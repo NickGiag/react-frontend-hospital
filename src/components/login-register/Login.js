@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-function Login({setLoggedIn, setUserId, setUserType}) {
+function Login({setLoggedIn, setUserId, setUserType, setUserName}) {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -23,14 +23,21 @@ function Login({setLoggedIn, setUserId, setUserType}) {
             if (response.data !== null) {
                 setUserId(response.data.id)
                 setUserType(response.data.userType)
+                setUserName(response.data.fullName)
                 setLoggedIn(true)
             }
             console.log('Logged in:', response.data);
             navigate('/');
         })
         .catch((error) => {
-            console.log('Error logging in:', error);
-            alert('Wrong username or password');
+            if (error.response && error.response.status === 404) {
+                const errorMessage = error.response.data;
+                console.log('User creation error:', errorMessage);
+                alert(errorMessage);
+            } else {
+                console.log('User creation error:', error);
+                alert('Error, User was not created.');
+            }
         })
 
         setUsername('');

@@ -79,6 +79,10 @@ function AppointmentUpdate({userId}) {
     });    
   };
 
+  const CustomDatePickerInput = ({ value, onClick }) => (
+    <input type="text" value={value} onClick={onClick} readOnly />
+  );
+
   return (
     <div className="appointment-form center">
       <form onSubmit={handleSubmit}>
@@ -99,7 +103,9 @@ function AppointmentUpdate({userId}) {
             selected={selectedDate}
             onChange={handleDateChange}
             dateFormat="yyyy-MM-dd"
+            popperPlacement="bottom"
             required
+            customInput={<CustomDatePickerInput />}
           />
         </div>
         <div>
