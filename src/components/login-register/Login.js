@@ -30,13 +30,12 @@ function Login({setLoggedIn, setUserId, setUserType, setUserName}) {
             navigate('/');
         })
         .catch((error) => {
-            if (error.response && error.response.status === 404) {
+            if (error.response && error.response.status === 401) {
                 const errorMessage = error.response.data;
-                console.log('User creation error:', errorMessage);
-                alert(errorMessage);
+                console.log(errorMessage.message);
+                alert(errorMessage.message);
             } else {
-                console.log('User creation error:', error);
-                alert('Error, User was not created.');
+                console.log('Login error:', error);
             }
         })
 

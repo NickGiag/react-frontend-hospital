@@ -39,6 +39,8 @@ function AppointmentForm({userId, userType}) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+
+
     const requestData = {
       doctor: {
         id: selectedDoctor.value,
@@ -62,9 +64,9 @@ function AppointmentForm({userId, userType}) {
     })
   };
 
-  const CustomDatePickerInput = ({ value, onClick }) => (
-    <input type="text" value={value} onClick={onClick} readOnly />
-  );
+  const CustomDatePickerInput = React.forwardRef(({ value, onClick }, ref) => (
+  <input type="text" value={value} onClick={onClick} readOnly ref={ref} />
+));
 
   return (
     <div className='appointment-form center'>

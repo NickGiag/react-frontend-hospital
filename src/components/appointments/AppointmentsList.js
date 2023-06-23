@@ -73,7 +73,7 @@ function AppointmentsList({userId, userType}) {
                 </tr>
             </thead>
             <tbody>
-                {appointments.map((appointment) => (
+                {appointments.sort((a, b) => a.appointmentDateTime.localeCompare(b.appointmentDateTime)).map((appointment) => (
                 <tr key={appointment.id}>
                     <td>{appointment.appointmentDateTime}</td>
                     <td>{appointment.customer.fullName}</td>
@@ -95,7 +95,7 @@ function AppointmentsList({userId, userType}) {
                 </tr>
             </thead>
             <tbody>
-                {appointments.map((appointment) => (
+                {appointments.sort((a, b) => a.appointmentDateTime.localeCompare(b.appointmentDateTime)).map((appointment) => (
                 <tr key={appointment.id}>
                     <td>{appointment.appointmentDateTime}</td>
                     <td>{appointment.doctor.fullName}</td>

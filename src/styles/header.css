@@ -1,6 +1,5 @@
 .header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   background-color: #0c7cd5;
   color: #ffffff;
@@ -17,4 +16,12 @@
 .header-user {
   margin-left: auto;
   padding-right: 20px;
+}
+
+.header img {
+  padding-top: 5px;
+}
+
+.header-logo {
+  margin-right: 50px; /* Adjust the margin as needed */
 }
