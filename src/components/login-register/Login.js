@@ -34,6 +34,10 @@ function Login({setLoggedIn, setUserId, setUserType, setUserName}) {
                 const errorMessage = error.response.data;
                 console.log(errorMessage.message);
                 alert(errorMessage.message);
+            } else if (error.response && error.response.status === 404) {
+                const errorMessage = error.response.data;
+                console.log(errorMessage);
+                alert(errorMessage);
             } else {
                 console.log('Login error:', error);
             }
